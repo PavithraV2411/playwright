@@ -1,4 +1,6 @@
 import {test, expect} from '@playwright/test';
+import data1 from '../tests/datadriven/value.json';
+import pom from '../tests/pom class/pom.js';
 
 test("playwright test", async ({page}) => {
     await page.goto("https://testautomationpractice.blogspot.com/");
@@ -10,7 +12,10 @@ test("playwright test", async ({page}) => {
     // await page.locator("//input[@id='sunday']").check();
     // await page.locator("//input[@id='wednesday']").check();
 
-    await page.getByPlaceholder("Enter Name").fill("admin");
-    await page.getByRole('button', { id: "btn2" }).click();
+    //await page.getByPlaceholder("Enter Name").fill("admin");
+    //await page.getByRole('button', { id: "btn2" }).click();
+
+    const data=new pom(page);
+    await data.loginapp(data1.email1,"This is testing");
     await page.pause();
 })
